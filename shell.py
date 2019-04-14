@@ -1,10 +1,4 @@
 from talon.voice import Context, Key, press, Str, Rep
-from user.utils import parse_words_as_integer    
-#
-import functools
-import time
-
-
 
 shell_map = {
     "em install": ['npm install',Key('enter')],
@@ -14,11 +8,8 @@ shell_map = {
     "hero": [ Key('esc'), 'G0','i',Key('ctrl-c ctrl-\\' ), 'git push heroku master',Key('enter' )],
     "em save": ['npm install --save '],
     "em test": ['npm test',Key('enter')],  
-   "shell quit": [Key('esc space m x esc G a')], 
-   "raptor": [Key('esc space m x esc G a enter')], 
+    "shell quit": [Key('esc space m x esc G a')], 
+    "raptor": [Key('esc space m x esc G a enter')], 
 
-
-   "shell root": [Key('esc p !')], 
-  # "New Shell": helm_action('shell'),
-
+    "shell root": [Key('esc p !')], 
 }  

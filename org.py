@@ -1,10 +1,5 @@
 from talon.voice import Context, Key, press, Str, Rep
 
-from user.utils import parse_words_as_integer,    parse_words_as_integer
-import functools
-import time
-
-
 org_map = {
     "organ": [Key('esc space o l')],
     "org toggle": [Key('esc shift-tab')],
@@ -27,6 +22,5 @@ org_map = {
 
     "org row": [Key('esc alt-shift-down')],
     "org column": [Key('esc alt-shift-right')],
- 
-}
+ }
 

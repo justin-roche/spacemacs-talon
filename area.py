@@ -1,6 +1,4 @@
 from talon.voice import Context, Key, press, Str, Rep
-from user.utils import parse_words_as_integer    
-import functools
 
 area_map = {
     "copy quotes": [Key('esc y i "')],
@@ -26,12 +24,12 @@ area_map = {
     'mutotis': Key('esc \" c i "'),
     'change quote': Key('esc \" c i "'),
     
-    "replace quotes": [Key('esc " _ c i " esc p')],
-    "replace paren": [Key('esc " _ c i ( esc p')],
-    "replace tick": [Key('esc " _ c i ` esc p')],
-    "replace bracket": [Key('esc " _ c i [ esc p')],
-    "replace brace": [Key('esc " _ c i { esc p')],
-    "replace line": [Key('esc " _ d d esc p')],
+    "paste quotes": [Key('esc " _ c i " esc p')],
+    "paste paren": [Key('esc " _ c i ( esc p')],
+    "paste tick": [Key('esc " _ c i ` esc p')],
+    "paste bracket": [Key('esc " _ c i [ esc p')],
+    "paste brace": [Key('esc " _ c i { esc p')],
+    "paste line": [Key('esc " _ d d esc p')],
 
     # surrounds
     'surround quote': "gS'", 

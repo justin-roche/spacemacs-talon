@@ -1,7 +1,4 @@
 from talon.voice import Context, Key, press, Str, Rep
-from user.utils import parse_words_as_integer
-import functools
-import time
 
 snippet_map = {
     'snip temparray': Key('esc i a r r'),

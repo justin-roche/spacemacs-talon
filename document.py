@@ -1,20 +1,5 @@
 from talon.voice import Context, Key, press, Str, Rep
-from user.utils import parse_words_as_integer, numerals
-import functools
-import time
-from user.emacs.vim_utils import jump_to_line,execute_action,set_mode
-
-def start_press(m,mode,t):
-    def rf(a):
-      global pressing
-      pressing = True
-      press(mode)  
-      for i in range(0,100):
-          if pressing  == True:
-            time.sleep((t or 0.1))
-            press(m)
-
-    return rf
+from user.emacs.utils import start_press
 
 document_map = {
     'fun': Key( 'cmd-esc ctrl-b'),
@@ -40,6 +25,5 @@ document_map = {
     
     "pretty": [Key('cmd-esc space m =')],
     "replace": [Key('esc space y r')],
-    # "delete occurrences": [Key("esc"),':%s///g',Key('left left left') ],
 }
 

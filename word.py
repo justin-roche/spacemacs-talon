@@ -2,33 +2,17 @@ from talon.voice import Context, Key, press, Str, Rep
 from user.utils import parse_words_as_integer, numerals, optional_numerals,text_to_number 
 import functools
 import time
-from user.emacs.vim_utils import jump_to_line,execute_action,set_mode
+from user.emacs.utils import interpolate_number  
 
-                    
-                    
-# def delete_small(m):
-
-                    # jump_number = text_to_number(m._words[1:] )
-                    # press('esc')
-                    # Str(str(jump_number) + 'dw')(None)
-                    
 def jump(m,k = None,a = None):
                     
                     jump_number = text_to_number(m._words[1:] )
                     if jump_number == 0:
                                         jump_number = 1
-                    press('cmd-esc')
-                    Str(str(jump_number) + k)(None)
-                    # if a != None:
+                                        press('cmd-esc')
+                                        Str(str(jump_number) + k)(None)
+                                        # if a != None:
                                         # Str(str(a))(None)
-def interpolate_number(m,s,i = 1):
-                    
-                    n = text_to_number(m._words[i:] )
-                    if n == 0:
-                                        n = 1
-                    press('cmd-esc')
-                    Str(str(s.format(n = n)) )(None)
-
 word_map = {
                     "big" + numerals: lambda x: jump(x, "W"),
                     "big" : lambda x: jump(x, "W"),
