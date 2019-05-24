@@ -1,19 +1,29 @@
 from talon.voice import Context, Key, press, Str, Rep 
 from user.utils import get_integer, parse_words_as_integer, numerals,text_to_number,optional_numerals
-from user.emacs.utils import jump, key_repeat, put_action, select_lines, range_select
+from user.emacs.utils import jump, key_repeat, select_lines, range_select,interpolate_number
 import functools
 import time 
 
+def tag(x):
+    Key('enter')(None)
+    key_repeat(x, 1,[" xJ"])
+
+def duplicate(x):
+    interpolate_number(x,"V{n}jY`>pO",1) 
+
+
 line_map  = {
                     
-                    "down" + numerals: lambda x: jump(x, "j"),
-                    "up" + numerals: lambda x: jump(x, "k"),
+                    "down" + numerals: lambda x: key_repeat(x,1, "j"),
+                    "up" + numerals: lambda x: key_repeat(x, 1,"k"),
+                    "up" : Key('cmd-esc k'),
+                    "down" : Key('cmd-esc j'),
 
-                    'lock' + optional_numerals + "to" + optional_numerals: range_select,
+                    # 'lock' + optional_numerals + "to" + optional_numerals: range_select,
                     'line end': Key('esc $'),
                     'line start': Key('esc 0'),
-
     #region selection
+
                     'select line': Key('esc V'),
                     'select end':[Key('esc'), 'v$','h'],
                     'select start':[Key('esc'), 'v^' ],
@@ -21,23 +31,21 @@ line_map  = {
 
 #   line delete
                     'cut line': Key('esc X'),
-                    'color': Key('esc X'),
+                    # 'color': Key('esc X'),
                     'delete line': Key('esc d d'),
                     'clear line': Key('esc ^ _ d $ a'),
                     'paste over line':  Key('esc V p' ),
-                    'pastel':  Key('esc V p' ),
+                    # 'pastel':  Key('esc V p' ),
 
                     "deli" + numerals: lambda x: jump(x, "dd"),
                     "deli" : lambda x: jump(x, "dd"),
-                    # line joins
 
+                    # line joins
                     'join':  Key('esc k J' ),
                     'joined':  Key('esc J' ),
 
-                    "move up" + numerals: lambda x: key_repeat(x, 2,["space", "x", "K"]),
-                    "move up"  : lambda x: key_repeat(x, 2,["space", "x", "K"]),
-                    "move down" + numerals: lambda x: key_repeat(x, 2,["space", "x", "J"]),
-                    "move down"  : lambda x: key_repeat(x, 2,["space", "x", "J"]),
+                    "move up" + numerals : lambda x: key_repeat(x, 2,[" xK"]),
+                    "move down" + numerals : lambda x: key_repeat(x, 2,[" xJ"]),
 
                     # delete to the end
                     'dark': Key('esc D'),
@@ -47,6 +55,8 @@ line_map  = {
 
                     #  line creation
                     'insert line': Key('esc o'),
+                    'break': Key('i enter enter esc k i'),
+    
                     'island': Key('esc o'),
                     'insert line above': Key('esc O'),
                     'inlet': Key('esc O'),
@@ -54,21 +64,24 @@ line_map  = {
                     'line break': [Key('esc i'), "\n"],
                     'duplicate line': Key('esc v Y p'),
                     'dope': Key('cmd-esc Y P'),
-
-                    'dope up': Key('esc v Y O esc p'),
-                    "put" + numerals: lambda x: put_action(x) ,
+                    # 'doper': Key('cmd-esc V y P o'),
+                    "doper" + numerals: duplicate,
+    
+                    'dope up': Key('cmd-esc v Y O esc p'),
+                    "put down" + numerals: lambda x: interpolate_number(x,"x{n}jp",2) ,
+                    "put up" + numerals: lambda x: interpolate_number(x,"x{n}kp",2) ,
+                    "go line" + numerals: lambda x: interpolate_number(x,"{n}G",1) ,
 
                     'insert space ': [Key('esc i'), " "],
-
 
                     "liner" + numerals: lambda x: select_lines(x, "k"),
                     "lines" + numerals: lambda x: select_lines(x, "j"),
                     'comment': [Key('esc space ;')],
-                    'comment lines': [Key('space ;')],
+                    'comment lines': [Key('space :')],
 
                     'tag colon': [ Key('esc $ a'),Key(':')],
                     'tag comma': [ Key('esc $ a'),Key(',')],
-                    'tag semi': [ Key('esc $ a'),Key(';')],
+                    'tag' + numerals:  lambda x: tag(x),
 
 #interline navigation
 

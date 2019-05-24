@@ -19,6 +19,7 @@ org_map = {
     "org schedule": [Key('esc ctrl-c ctrl-s')],
     "org agenda": [Key('esc space m a c')],
     "org archive": [Key('esc , A')],
+    "org ark": [Key('cmd-esc Y p , A')],
 
     "org row": [Key('esc alt-shift-down')],
     "org column": [Key('esc alt-shift-right')],
