@@ -20,7 +20,6 @@ word_map = {
                     "small" : lambda x: jump(x, "w"),
                     "big back" + numerals: lambda x: jump(x, "B"),
                     "big back" : lambda x: jump(x, "B"),
-
                     
                     # "delete small" + numerals: lambda x: jump(x, "daw"),
                     # "delete big" : lambda x: jump(x, "daW"),
@@ -46,7 +45,7 @@ word_map = {
 
                     'repy': Key('x i'),
                     'change case': Key('esc b ~ e a '),
-                    'transpose words': [Key('esc'),'dawwP'],
+                    # 'transpose words': [Key('esc'),'dawwP'],
 }
 
 

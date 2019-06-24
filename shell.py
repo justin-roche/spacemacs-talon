@@ -1,4 +1,9 @@
 from talon.voice import Context, Key, press, Str, Rep
+from user.utils import get_integer, parse_words_as_integer, numerals,text_to_number,optional_numerals,parse_words,is_filetype
+
+exts = ("*shell*", ".orgx")
+
+context = Context("shell", func=is_filetype(exts))
 
 shell_map = {
     "shell start": [Key('cmd-esc space b S')],
@@ -19,3 +24,23 @@ shell_map = {
 
     "gulp start": [ Key('esc'), 'G0','i',Key('ctrl-c' ), Key('ctrl-\\' ), 'gulp watch',Key('enter' )],
 }  
+context.keymap(shell_map)
+
+
+
+
+
+
+
+# ctx.keymap({
+    # "toggle on": [ lambda _: ctx.load()],
+    # "toggle off": [ lambda _: ctx.unload()],
+    # "snap done": [mg.stop, lambda _: ctx.unload()],
+# })  
+
+
+
+
+
+
+ 

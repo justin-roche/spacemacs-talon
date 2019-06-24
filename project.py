@@ -15,7 +15,6 @@ project_map = {
     "get init": [Key('cmd-esc space g i')],
     "get initialize": [Key('cmd-esc space g i')],
     "get status": [Key('cmd-esc space g s')],
-    "get finalize ": [Key('alt-m g f')],
     "get fast": [Key('cmd-esc space g f y c')],
     "get push": [Key('cmd-esc space g P')],
     # "repo  finalize": [Key('ctrl-c ctrl-c')],

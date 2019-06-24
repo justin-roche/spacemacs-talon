@@ -4,6 +4,7 @@ area_map = {
     "delete match": [Key('esc v % d')],
     "cut match": [Key('esc v % x')],
     "go match": [Key('cmd-esc %')],
+    "go match": [Key('cmd-esc %')],
     
     "copy quotes": [Key('esc y i "')],
     "copy paren": [Key('esc y i (')],
@@ -96,6 +97,7 @@ area_map = {
     'delta back': Key('esc d T'),
 
     'select content': Key('cmd-esc space m c'),
+    'change content': Key('cmd-esc space m c x i'),
 
 
 }

@@ -13,13 +13,19 @@ character_map = {
     'repy caps': Key('esc ~'),
     'repy caps': Key('esc ~'),
 
-    'geek': Key('esc / = enter a'),
+# surrounds
+
     'gamma': Key('esc / \ , enter a'),
+    'gamma' + optional_numerals:  functools.partial(goto_character, 'esc / \ , enter a' ),
     'gecko': Key('esc / \' \ | " enter a'),
-    'garage': Key('esc / \ [ \ | \ ] enter a'),
     'gecko' + optional_numerals:  functools.partial(goto_character, 'esc / \' \ | " enter a' ),
-    'goalie': Key('esc / : enter a'),
     'gap': Key('esc / ( \ | ) enter a'),
+    'gap' + optional_numerals:  functools.partial(goto_character, 'esc / ( \ | ) enter a' ),
+    'garage': Key('esc / \ [ \ | \ ] enter a'),
+
+# symbols
+    'geek': Key('esc / = enter a'),
+    'goalie': Key('esc / : enter a'),
     # 'geek' + optional_numerals:  functools.partial(goto_character, 'esc / = enter a' ),
     # 'gamma' + optional_numerals:  functools.partial(goto_character, 'esc / \ , enter a'),
     # 'gab': Key('esc / \ [ \ | \ ] enter a'),

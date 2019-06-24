@@ -5,6 +5,8 @@ import time
 import threading
 from talon import ctrl
 
+from user.emacs.server import send
+
 
 alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near odd pit quest red sun trap urge vest whale box yes zip'.split()
 
@@ -33,16 +35,26 @@ def jump(m,k = None):
 
                     Str(str(jump_number))(None)
                     Str(k)(None)
-                    
+
+
+
+
+def send_parsed_number(m,c,i = 1):
+                    n = text_to_number(m._words[i:] )
+                    n = str(n) 
+
+                    send(str(c)+"/"+n)
+
 
 def key_repeat(m,i = 1,k = []):
                     repeat_number = text_to_number(m._words[i:] )
                     if repeat_number == 0:
                                         repeat_number = 1
                     press("cmd-esc") 
+
                     for i in range(0, repeat_number):
                         for key in k:
-                            if key == 'down' or key == 'up' or key == 'enter' or key  == "ctrl-alt-j" or key  == "ctrl-alt-k"  :
+                            if key == 'down' or key == 'up' or key == 'enter' or key  == "ctrl-alt-j" or key  == "ctrl-alt-k" or  key == "ctrl-p" or key == "ctrl-n" :
                                 press(key)
                                 # (Nonel
                             else:
