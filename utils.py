@@ -22,10 +22,16 @@ def del_action(m):
 def interpolate_number(m,s,i = 1):
                     
                     n = text_to_number(m._words[i:] )
-                    if n == 0:
-                                        n = 1
-                    press('cmd-esc')
+                    # if n == 0:
+                                        # n = 1
+                    # press('cmd-esc')
                     Str(str(s.format(n = n)) )(None)
+
+# {n},{{n}*ctrl}
+# def parse_command(m,s,i = 1):
+
+
+
 
 def jump(m,k = None):
                     jump_number = text_to_number(m._words[1:] )
@@ -36,39 +42,27 @@ def jump(m,k = None):
                     Str(str(jump_number))(None)
                     Str(k)(None)
 
+def repeat_k(n,k):
+                    for i in range(0, n):
+                        for key in k:
+                            if key == 'down' or key == 'up' or key == 'enter' or key  == "ctrl-alt-j" or key  == "ctrl-alt-k" or  key == "ctrl-p" or key == "ctrl-n" :
+                                press(key)
 
-
-
-def send_parsed_number(m,c,i = 1):
-                    n = text_to_number(m._words[i:] )
-                    n = str(n) 
-
-                    send(str(c)+"/"+n)
-
+                            else:
+                                Str(str(key))(None) # Key(key)
 
 def key_repeat(m,i = 1,k = []):
                     repeat_number = text_to_number(m._words[i:] )
                     if repeat_number == 0:
                                         repeat_number = 1
                     press("cmd-esc") 
+                    repeat_k(repeat_number,k)
 
-                    for i in range(0, repeat_number):
-                        for key in k:
-                            if key == 'down' or key == 'up' or key == 'enter' or key  == "ctrl-alt-j" or key  == "ctrl-alt-k" or  key == "ctrl-p" or key == "ctrl-n" :
-                                press(key)
-                                # (Nonel
-                            else:
-                                Str(str(key))(None) # Key(key)
-                                                           
+def parse_command(m,k,i = 1):
+    # n = text_to_number(m._words[i:] )
+    n = 2
 
-# def put_action(m):
-                    # jump_number = text_to_number(m._words[1:] )
-                    # if jump_number == 0:
-                    #                     jump_number = 1
-                    # press("cmd-esc")
-                    # Str('yy')(None)
-                    # Str(str(jump_number - 1) + 'j')(None)
-                    # # Str('p')(None)
+parse_command(1,"{n*j}")
 
 def select_lines(m,k = None):
         line_number = text_to_number(m._words[1:])
@@ -125,8 +119,15 @@ def lisp_eval(c):
     # Key('cmd-esc alt-:')
     Str(c)
     # Key('enter')
+
 def elisp(c):
     press('cmd-esc')
     press('alt-:')
     Str(c)(None)
     press('enter')
+
+def send_parsed_number(m,c,i = 1):
+                    n = text_to_number(m._words[i:] )
+                    n = str(n) 
+
+                    send(str(c)+"/"+n)

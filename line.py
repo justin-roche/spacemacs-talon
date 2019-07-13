@@ -5,16 +5,6 @@ from user.emacs.utils import jump, key_repeat, select_lines, range_select,interp
 import functools
 import time 
 
-def something():
-    x = is_filetype(["org"])("emacs")
-    # Str("i")
-    Str("something")(None)
-    Str(str(x))(None)
-
-# context = Context("javascript", func=is_filetype(JS_EXTENSIONS))
-
-
-
 def tag(x):
     Key('enter')(None)
     key_repeat(x, 1,[" xJ"])
@@ -24,8 +14,6 @@ def duplicate(x):
 
 
 line_map  = {
-                    "keyboard": lambda x: something(), 
-
 
                     "down" + numerals: lambda x: key_repeat(x,1, "j"),
                     "up" + numerals: lambda x: key_repeat(x, 1,"k"),
@@ -73,7 +61,7 @@ line_map  = {
                     'break': Key('i enter enter esc k i'),
     
                     'island': Key('esc o'),
-                    'insert line above': Key('esc O'),
+                    # 'insert line above': Key('esc O'),
                     'inlet': Key('esc O'),
 
                     'line break': [Key('esc i'), "\n"],
@@ -90,8 +78,9 @@ line_map  = {
                     # 'insert space ': [Key('esc i'), " "],
 
     "get down" + numerals: lambda x: key_repeat(x,2, ["ctrl-n"]),
-                    "liner" + numerals: lambda x: select_lines(x, "k"),
-                    "lines" + numerals: lambda x: select_lines(x, "j"),
+                    "liner" + numerals: lambda x: interpolate_number(x, "V{n}k",1),
+                    "lines" + numerals: lambda x: interpolate_number(x, "V{n}j",1),
+
                     'comment': [Key('esc space ;')],
                     'comment lines': [Key('space :')],
 
@@ -103,6 +92,6 @@ line_map  = {
 
                     "northwest": Key("esc k $"),
                     "southwest": Key("esc j $"),
-                   "northeast": Key("esc k 0"),
+    "northeast": Key("esc k 0"),
                     "southeast": Key("esc j 0"),
 }

@@ -1,5 +1,5 @@
 from talon.voice import Context, Key, press, Str, Rep
-from user.emacs.utils import start_press, mouse_scroll_up,stop_scroll,mouse_scroll_down
+from user.emacs.utils import start_press, mouse_scroll_up,stop_scroll,mouse_scroll_down,elisp
 from user.emacs.server import send,disconnect,connect
 
 document_map = {
@@ -29,12 +29,14 @@ document_map = {
     # "search": lambda x: send("search"),
 
     "search": Key('cmd-esc /'),
+    # "search": lambda x: elisp("(voice-search)"),
     "back": Key('cmd-esc ?'),
 
     "jump": [Key('esc , g g')],
     "mode jump": [Key('esc space m j')],
     # "show jumps": [ Key('esc ctrl-c ctrl-j')],
     # "halt": stop_right,
+    'basil': Key('esc ` `'),
     
     "pretty": [Key('cmd-esc space m =')],
     "replace": [Key('esc g g space y r')],
