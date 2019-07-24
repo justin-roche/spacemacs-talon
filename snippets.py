@@ -1,4 +1,4 @@
-from talon.voice import Context, Key, press, Str, Rep
+from talon.voice import Key
 
 snippet_map = {
     'call': ['()', Key('left')],

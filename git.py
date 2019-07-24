@@ -1,15 +1,14 @@
-from talon.voice import Context, Key, press, Str, Rep 
-from user.utils import get_integer, parse_words_as_integer, numerals,text_to_number,optional_numerals,parse_words,is_filetype
-from user.emacs.server import send
-from user.emacs.utils import jump, key_repeat, select_lines, range_select,interpolate_number,send_parsed_number 
-import functools
-import time 
+from talon.voice import Context, Key 
+
+from user.utils import is_filetype, numerals
+from user.emacs.utils import key_repeat ,elisp
 
 exts = ("magit:", "COMMIT_EDITMSG")
 
 context = Context("git", func=is_filetype(exts))
 
 git_map = {
+    "get init": lambda x:  elisp("(magit-init)"),
     "get finalize ": [Key('alt-m g f')],
 
     "sin": [Key('ctrl-l')],

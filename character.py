@@ -21,7 +21,7 @@ character_map = {
     'gecko' + optional_numerals:  functools.partial(goto_character, 'esc / \' \ | " enter a' ),
     'gap': Key('esc / ( \ | ) enter a'),
     'gap' + optional_numerals:  functools.partial(goto_character, 'esc / ( \ | ) enter a' ),
-    'garage': Key('esc / \ [ \ | \ ] enter a'),
+    'gab': Key('esc / \ [ \ | \ ] enter a'),
 
 # symbols
     'geek': Key('esc / = enter a'),

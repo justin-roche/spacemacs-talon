@@ -1,13 +1,12 @@
-from talon.voice import Context, Key, press, Str, Rep
+from talon.voice import Key
 
 
 project_map = {
         "grep": [Key('esc alt-m s a h')],
 
-    "project directory": [Key('esc space p d')],
+"project directory": [Key('esc space p d')],
     "list projects": [Key('esc space p p')], 
     "project file": [Key('esc space p f') ],
-    "pro shell": [Key('esc space p s') ],
     "find file": [Key('esc space p f') ],
     "project": [Key('esc space p l')],
     

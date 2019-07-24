@@ -1,11 +1,9 @@
+from talon.voice import Context, Key, Str, press
+from user.utils import is_filetype, numerals, text_to_number
 
-from talon.voice import Context, Key, press, Str, Rep
-from user.utils import get_integer, parse_words_as_integer, numerals,text_to_number,optional_numerals,parse_words,is_filetype
-from user.emacs.utils import jump, key_repeat, select_lines, range_select,interpolate_number,send_parsed_number 
+from user.utils import numerals, text_to_number
 
-from user.utils import get_integer, parse_words_as_integer, numerals,text_to_number,optional_numerals
-
-exts = ("*Minibuf-1*", ".orgx")
+exts = ("*Minibuf", ".orgx")
 
 context = Context("helm", func=is_filetype(exts))
 
@@ -17,6 +15,7 @@ def helm_select(x):
 helm_map = {
     "down" + numerals: lambda x: helm_select(x),
     "hat" + numerals: lambda x: helm_select(x) ,
+    "copy" : Key("ctrl-c ctrl-k"),
 }
 
 context.keymap(helm_map)

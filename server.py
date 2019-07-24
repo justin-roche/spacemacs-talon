@@ -1,8 +1,6 @@
 
-from talon.voice import Context, Str, Word, Key, Rep, press
 import socket
 import threading
-
 
 def threaded_scroll(dir):
     size = 1024
