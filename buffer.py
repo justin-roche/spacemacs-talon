@@ -1,10 +1,12 @@
 from talon.voice import Key
 from user.emacs.utils import elisp
+from user.std import parse_words
 
 buffer_map = {
     "file lint": [Key('esc space m l')],
     "save": [Key('esc space f s z z')],
-    "savage": lambda x: elisp("(save-and-switch)"),
+    "savage":
+    lambda x: elisp("(save-and-switch)"),
     "scratch": [Key('esc space b s')],
 
     # window navigation
@@ -18,18 +20,29 @@ buffer_map = {
 
     # buffer navigation
     "lab": [Key('esc space b p')],
-    "list recent": lambda x: elisp("(helm-recentf)"),
-    "show messages": lambda x:  elisp("(view-echo-area-messages)"),
-    
+    "list recent":
+    lambda x: elisp("(helm-recentf)"),
+    "show messages":
+    lambda x: elisp("(view-echo-area-messages)"),
     "buff": [Key('esc space l b')],
+    'buffy <dgndictation>':
+    lambda x: elisp("(custom-search-buffer-names \"" + parse_words(x)[0] +
+                    "\")"),
+    'buff <dgndictation>':
+    lambda x: elisp("(custom-search-buffer-names \"" + parse_words(x)[0] +
+                    "\")"),
     "nab": [Key('esc space b n')],
     "next buffer": [Key('esc space b n')],
 
     # tabs navigation
-    "tabber": lambda x: elisp("(centaur-tabs-forward-group)"),
-    "tabby": lambda x: elisp("(centaur-tabs-backward-group)"),
-    "lat": lambda x: elisp("(centaur-tabs-backward)"),
-    "nat": lambda x: elisp("(centaur-tabs-forward)"),
+    "tabber":
+    lambda x: elisp("(centaur-tabs-forward-group)"),
+    "tabby":
+    lambda x: elisp("(centaur-tabs-backward-group)"),
+    "lat":
+    lambda x: elisp("(centaur-tabs-backward)"),
+    "nat":
+    lambda x: elisp("(centaur-tabs-forward)"),
 
     # closing
     "close window": [Key('esc space w d')],
@@ -43,10 +56,10 @@ buffer_map = {
     "new vertical": [Key('ctrl-x 2')],
 
     #windows by number
-    "win 1": [Key('esc space 1')],
-    "win 2": [Key('esc space 2')],
-    "win 3": [Key('esc space 3')],
-    "win 4": [Key('esc space 4')],
+    "winny 1": [Key('cmd-esc space 1')],
+    "winny 2": [Key('cmd-esc space 2')],
+    "winny 3": [Key('cmd-esc space 3')],
+    "winny 4": [Key('cmd-esc space 4')],
 
     #frames
     "next frame": [Key('esc space f f')],

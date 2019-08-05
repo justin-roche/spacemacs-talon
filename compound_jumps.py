@@ -4,13 +4,13 @@ compound_jumps_map = {
     # current
     "chaser":
     lambda x: elisp('(custom-avy-generic-crt "dw")'),
-    "vaser":
-    lambda x: elisp('(custom-avy-generic-crt "e" "v" :state 1)'),
+    # "vaser":
+    # lambda x: elisp('(custom-avy-generic-crt "e" "v" :state 1)'),
     "dicer":
     lambda x: elisp('(custom-avy-generic-crt "ex" "v")'),
     # document
-    "chase":
-    lambda x: elisp('(custom-avy-generic "dw")'),
+    # "chase":
+    # lambda x: elisp('(custom-avy-generic "dw")'),
     "chase big":
     lambda x: elisp('(custom-avy-generic "dW")'),
     #
@@ -19,14 +19,16 @@ compound_jumps_map = {
     "chase matcher":
     lambda x: elisp('(custom-avy-generic-match "d" nil nil t)'),
     #
-    "vase":
-    lambda x: elisp('(custom-avy-generic-2-visual "v" "e")'),
+    # "vase":
+    # lambda x: elisp('(custom-avy-generic-2-visual "v" "e")'),
     "dice":
-    lambda x: elisp('(custom-avy-generic-2 "d" "v" "v")'),
+    lambda x: elisp('(custom-avy-generic-2 "v" "ed")'),
     "dice end":
     lambda x: elisp('(custom-avy-generic "D")'),
     #
     # append
+    "mace":
+    lambda x: elisp('(custom-avy-visual-return "ex" "p")'),
     "place":
     lambda x: elisp('(custom-avy-generic "ea")'),
     # copy

@@ -1,4 +1,5 @@
 from talon.voice import Key
+from user.custom_utils import interpolate
 from user.emacs.utils import elisp, interpolate_number, jump, key_repeat
 from user.utils import numerals
 
@@ -7,21 +8,31 @@ line_map = {
     # navigation
     "up" + numerals: [
         lambda x: key_repeat(x, 1, "k"),
-        lambda x: elisp("(back-to-indentation)")
+        lambda x: elisp("(back-to-indentation)"),
+        # Key("i")
     ],
     "down" + numerals: [
         lambda x: key_repeat(x, 1, "j"),
-        lambda x: elisp("(back-to-indentation)")
+        lambda x: elisp("(back-to-indentation)"),
+        # Key("i")
     ],
     # "up" + numerals: lambda x: key_repeat(x, 1,"k"),
     "down":
     Key('cmd-esc j'),
     "up":
     Key('cmd-esc k'),
-    'line end':
-    Key('esc $'),
-    'line start':
-    lambda x: elisp("(back-to-indentation)"),
+    'lend' + numerals:
+    lambda x: interpolate("cmd-esc $ {h*n} a", x),
+    'lend':
+    Key('esc $ a'),
+    'lens' + numerals: [
+        lambda x: elisp("(back-to-indentation)"),
+        lambda x: interpolate("{l*n} a", x),
+    ],
+    'lens': [
+        lambda x: elisp("(back-to-indentation)"),
+        Key("i"),
+    ],
 
     #interline navigation
     "northwest":
@@ -66,8 +77,6 @@ line_map = {
     lambda x: key_repeat(x, 2, [" xJ"]),
 
     # delete to the end
-    'dark':
-    Key('esc D'),
     'delete to end':
     Key('esc l D a'),
     'delete to start':
@@ -92,15 +101,17 @@ line_map = {
 
     # "get down" + numerals: lambda x: key_repeat(x,2, ["ctrl-n"]),
     "jumper" + numerals:
-    lambda x: interpolate_number(x, "{n}G", 1),
+    lambda x: interpolate("{n} G", x, 1),
     "liner" + numerals:
     lambda x: interpolate_number(x, "V{n}k", 1),
     "lines" + numerals:
     lambda x: interpolate_number(x, "V{n}j", 1),
 
     # tags
-    'comment': [Key('esc space ;')],
-    'comment lines': [Key('space :')],
+    'commie': [Key("cmd-esc V g c i")],
+    "commie" + numerals:
+    lambda x: interpolate("cmd-esc V {n} j g c i", x, 1),
+    # 'commies': [Key('g c i')],
     'tag colon': [Key('esc $ a'), Key(':')],
     'tag comma': [Key('esc $ a'), Key(',')],
 }

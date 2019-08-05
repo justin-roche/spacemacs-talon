@@ -8,6 +8,8 @@ context = Context("tree", func=is_filetype(exts))
 
 tree_map = {
     "open": [Key('ctrl-l ')],
+    "tree path":
+    lambda x: elisp("(treemacs-copy-path-at-point)"),
     "workspace":
     lambda x: elisp("(treemacs-edit-workspaces)"),
     "tree shell":
@@ -54,7 +56,7 @@ tree_map = {
     lambda x: elisp("(treemacs-create-dir)"),
     "create":
     lambda x: elisp("(treemacs-create-file)"),
-    "deli":
+    "tree delete":
     lambda x: elisp("(treemacs-delete)"),
     # "delete node": lambda x:  elisp("(treemacs-delete)"),
     "shell":

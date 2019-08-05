@@ -17,6 +17,7 @@ lisp_map = {
     "slurp": [Key('esc space k s')],
     "jump": [Key('cmd-esc space m g g')],
     "barf": [Key('esc space k b')],
+    # evaluation
     "evaluate buffer": [Key('esc , e b')],
     "eve region": [Key('cmd-esc , e r')],
     "evelyn": [Key('cmd-esc , e l')],
@@ -30,7 +31,8 @@ lisp_map = {
         lambda x: elisp("(spacemacs/edebug-instrument-defun-on)"),
         lambda x: elisp("(edebug-set-breakpoint t)"),
     ],
-    "optional": " &optional ",
+    "optional":
+    " &optional ",
     "debug finish":
     lambda x: elisp("(debugger-quit)"),
 }

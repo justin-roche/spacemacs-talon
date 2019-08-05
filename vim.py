@@ -44,8 +44,19 @@ vim_map = {
     'paster': [Key('esc o p')],
     'paste below': [Key('cmd-esc o cmd-esc p')],
     'paste above': [Key('cmd-esc O cmd-esc p')],
-    "last change":
-    lambda x: elisp("(goto-last-change t)"),
+    "list previous":
+    lambda x: elisp("(backward-list)"),
+    "list next":
+    lambda x: elisp("(forward-list)"),
+    "list down":
+    lambda x: elisp("(down-list)"),
+    "list up":
+    lambda x: elisp("(up-list)"),
+    "sex previous":
+    lambda x: elisp("(backward-sexp)"),
+    "sex next":
+    lambda x: elisp("(forward-sexp)"),
+    # lambda x: elisp("(goto-last-change t)"),
     "undies":
     Key("esc u"),
     "redo": [Key('esc'), Key('ctrl-r')],

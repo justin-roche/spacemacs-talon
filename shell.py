@@ -66,6 +66,7 @@ shell_map = {
     "jekyll": ['jekyll serve'],
 
     # "environment new": ['mkvirtualenv project_folder'],
+    "talon log": ['tail -f ~/.talon/talon.log'],
     # "environment make": ['mkproject '],
     # "environment work": ['workon '],
     # "environment list": ['lsvirtualenv '],
